@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Innocent Bit ; | improvement challenge #3</title>
+    <link rel="shortcut icon" type="image/png" href="./favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="stylesheet" href="./theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="./theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="./theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+    <meta name="description" content="" />
+    <meta name="author" content="babysitter" />
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="./">Home</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="./">Innocent Bit ;</a></h1>
+        </div>
+    </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Nov 16, 2016</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="./improvement-challenge-3.html" rel="bookmark" title="Permanent Link to &quot;improvement challenge #3&quot;">improvement challenge #3</a>
+                </h2>
+
+                
+                
+
+                <p>actually i am not doing very good job right now :(<br>
+added adapter class and object patterns into my github repo.
+ going to overtake the linux course tasks and add factories patterns.</p>
+<h2>trivia time!</h2>
+<h3>which code snippet is better and why?</h3>
+<p><code>T</code> is a random class, <code>g</code> and <code>foo</code> are function calls</p>
+<div class="highlight"><pre><span></span>// first snippet
+foo(shared_ptr&lt;T&gt;(new T), g());
+// second snippet
+foo(make_shared&lt;T&gt;(), g());
+</pre></div>
+
+
+<p>first of all <code>make_shared</code> performs one heap-allocation, whereas calling the <code>shared_ptr c-tor</code> <a href="http://en.cppreference.com/w/cpp/memory/shared_ptr">performs two</a>.</p>
+<p>but in this case perfomance is not the worst part - we should be aware of exceptions!
+<a href="https://isocpp.org/wiki/faq/exceptions#ctors-can-throw">c++faq</a> says that exceptions in c-tor is fine.</p>
+<div class="highlight"><pre><span></span>void f() {
+ X x;            // If X::X() throws, the memory for x itself will not leak
+ Y* p = new Y(); // If Y::Y() throws, the memory for *p itself will not leak
+}
+</pre></div>
+
+
+<p>exceptions in <code>T c-tor</code> by itself is ok in our snippets, but if <code>g()</code> is not <code>noexcept</code> that means it could throw an exception. so in c++ <code>The order of evaluation of arguments is unspecified</code> hence this could happen in the first (slow) snippet:</p>
+<ul>
+<li>first heap allocation has performed <code>new T</code></li>
+<li>function <code>g()</code> has called</li>
+<li><code>g()</code> throws an exception</li>
+<li><code>delete</code> for the first allocation will never be performed</li>
+<li>say hello to your memory leak!</li>
+</ul>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="./improvement-challenge-3.html">posted at 23:00</a>
+                </div>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+                <a href="https://github.com/jody-frankowski/blue-penguin">Blue Penguin</a> Theme
+                &middot;
+                Powered by <a href="http://getpelican.com">Pelican</a>
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
+</body>
+</html>
