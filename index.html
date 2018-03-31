@@ -25,7 +25,29 @@
         </div>
     </header>
     <div id="wrapper">
-        <div id="content">            <h4 class="date">Jul 09, 2017</h4>
+        <div id="content">            <h4 class="date">Mar 31, 2018</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="./well-here-we-go-again.html" rel="bookmark" title="Permanent Link to &quot;Well, here we go again&quot;">Well, here we go again</a>
+                </h2>
+
+                
+                
+
+                <p>It's been a while guys, much had changed since my last post.
+ Now I'm typing this in vim inside my WSL Ubuntu on Windows laptop (linux gaming finally become too much),
+ I've changed the job, have completed my master's, have started a new one...
+ Life's changing, and I think a lot you know, so I decided to revive this little useless blog.</p>
+<p>Place just for me (sounds so pretentious lol)</p>
+<p>We'll se where it goes.</p>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="./well-here-we-go-again.html">posted at 23:00</a>
+                </div>
+		<a href="./well-here-we-go-again.html#disqus_thread">Click to read and post comments</a>
+            </article>            <h4 class="date">Jul 09, 2017</h4>
 
             <article class="post">
                 <h2 class="title">
@@ -36,11 +58,9 @@
                 
 
                 <p><em>Ahem..</em> I guess it works.</p>
-<p><em>markdown</em> <strong>seems</strong> to be <strong><em>working</em></strong>.</p>
-<p>There have been a lot of changes in my life recently, so I decided to move my useless blog to
-the more convinient and popular platform. Now it uses python-based <a href="https://github.com/getpelican/pelican">Pelican</a> as a
- generator with a theme called <a href="https://github.com/jody-frankowski/blue-penguin">blue penguin</a>. I'm still new with that software, but
- I'm getting used to it slowly. Thats it for now, I will be back soon.</p>
+<p><em>this is in italic</em>  and <em>so is this</em></p>
+<p><strong>this is in bold</strong>  and <strong>so is this</strong></p>
+<p><strong><em>this is bold and italic</em></strong>  and <strong><em>so is this</em></strong></p>
                 <div class="clear"></div>
 
                 <div class="info">
@@ -85,8 +105,7 @@ the more convinient and popular platform. Now it uses python-based <a href="http
                     <a href="./all-times-greatest-game.html">posted at 12:01</a>
                 </div>
 		<a href="./all-times-greatest-game.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Dec 12, 2016</h4>
-
+            </article>
             <article class="post">
                 <h2 class="title">
                     <a href="./december-first-half.html" rel="bookmark" title="Permanent Link to &quot;december first half&quot;">december first half</a>
@@ -121,13 +140,13 @@ the more convinient and popular platform. Now it uses python-based <a href="http
                 
                 
 
-                <p>actually i am not doing very good job right now :(<br>
+                <p>actually i am not doing very good job right now :(<br />
 added adapter class and object patterns into my github repo.
  going to overtake the linux course tasks and add factories patterns.</p>
 <h2>trivia time!</h2>
 <h3>which code snippet is better and why?</h3>
 <p><code>T</code> is a random class, <code>g</code> and <code>foo</code> are function calls</p>
-<div class="highlight"><pre><span></span>// first snippet
+<div class="highlight"><pre>// first snippet
 foo(shared_ptr&lt;T&gt;(new T), g());
 // second snippet
 foo(make_shared&lt;T&gt;(), g());
@@ -137,7 +156,7 @@ foo(make_shared&lt;T&gt;(), g());
 <p>first of all <code>make_shared</code> performs one heap-allocation, whereas calling the <code>shared_ptr c-tor</code> <a href="http://en.cppreference.com/w/cpp/memory/shared_ptr">performs two</a>.</p>
 <p>but in this case perfomance is not the worst part - we should be aware of exceptions!
 <a href="https://isocpp.org/wiki/faq/exceptions#ctors-can-throw">c++faq</a> says that exceptions in c-tor is fine.</p>
-<div class="highlight"><pre><span></span>void f() {
+<div class="highlight"><pre>void f() {
  X x;            // If X::X() throws, the memory for x itself will not leak
  Y* p = new Y(); // If Y::Y() throws, the memory for *p itself will not leak
 }
@@ -191,17 +210,17 @@ foo(make_shared&lt;T&gt;(), g());
 <h2>trivia time!</h2>
 <h3>which code snippet is faster and why?</h3>
 <p>move <code>A</code> is fast, copy is slow, default vector c-tor is negligible</p>
-<div class="highlight"><pre><span></span><span class="nt">A</span> <span class="nt">a</span><span class="o">;</span>
+<div class="highlight"><pre><span class="nt">A</span> <span class="nt">a</span><span class="o">;</span>
 <span class="o">//</span> <span class="nt">first</span> <span class="nt">snippet</span>
-<span class="nt">vector</span><span class="o">&lt;</span><span class="nt">A</span><span class="o">&gt;</span> <span class="nt">b</span> <span class="p">{</span><span class="n">std</span><span class="p">:</span><span class="o">:</span><span class="nf">move</span><span class="p">(</span><span class="n">a</span><span class="p">)}</span><span class="o">;</span>
+<span class="nt">vector</span><span class="o">&lt;</span><span class="nt">A</span><span class="o">&gt;</span> <span class="nt">b</span> <span class="p">{</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">a</span><span class="p">)}</span><span class="o">;</span>
 <span class="o">//</span> <span class="nt">second</span> <span class="nt">snippet</span>
 <span class="nt">vector</span><span class="o">&lt;</span><span class="nt">A</span><span class="o">&gt;</span> <span class="nt">b</span><span class="o">;</span>
-<span class="nt">b</span><span class="p">.</span><span class="nc">emplace_back</span><span class="o">(</span><span class="nt">std</span><span class="p">::</span><span class="nd">move</span><span class="o">(</span><span class="nt">a</span><span class="o">));</span>
+<span class="nt">b</span><span class="nc">.emplace_back</span><span class="o">(</span><span class="nt">std</span><span class="o">:</span><span class="nd">:move</span><span class="o">(</span><span class="nt">a</span><span class="o">));</span>
 </pre></div>
 
 
-<p>well.. that is the same anyways, right? it is not actually.<br>
-second snippet does exactly what we thought - one <code>A move c-tor call</code><br>
+<p>well.. that is the same anyways, right? it is not actually.<br />
+second snippet does exactly what we thought - one <code>A move c-tor call</code><br />
 but first calls one more copy c-tor after that.</p>
 <ul>
 <li><code>a</code> moves to <code>initializer_list</code> </li>
@@ -280,17 +299,17 @@ vector internals </li>
                 
                 
 
-                <p>well.. a lot of things have happened<br>
-a lot of things are happening right now<br>
+                <p>well.. a lot of things have happened<br />
+a lot of things are happening right now<br />
 but basic things are the same.</p>
 <p>doing my best to improve my c++ skills to get a diecent job when
 my contract will expire, going to write a portable tool for
 emulating localization algorithms in WSNs for my thesis.</p>
 <p>my gentoo got its updates recently, A LOT.. hours and hours of compiling.
  new 4.4.21 kernel installed this morning.</p>
-<p>watching new <a href="https://www.youtube.com/playlist?list=PLHTh1InhhwT7J5jl4vAhO1WvGHUUFgUQH">cppcon 2016</a> videos and listening to the <a href="http://cppcast.com/">cppcasts</a><br>
+<p>watching new <a href="https://www.youtube.com/playlist?list=PLHTh1InhhwT7J5jl4vAhO1WvGHUUFgUQH">cppcon 2016</a> videos and listening to the <a href="http://cppcast.com/">cppcasts</a><br />
 going to go to the <a href="http://conference.corehard.by/">local c++ group meeting</a>, hope will worth it</p>
-<p>i will try to post here more often,<br>
+<p>i will try to post here more often,<br />
 this can be very useful in many ways.</p>
                 <div class="clear"></div>
 
@@ -320,8 +339,7 @@ this can be very useful in many ways.</p>
                     <a href="./croatiaslovenia-open-2016.html">posted at 19:00</a>
                 </div>
 		<a href="./croatiaslovenia-open-2016.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">Jun 05, 2016</h4>
-
+            </article>
             <article class="post">
                 <h2 class="title">
                     <a href="./my-getnoo-troubles.html" rel="bookmark" title="Permanent Link to &quot;my getnoo troubles&quot;">my getnoo troubles</a>
@@ -388,8 +406,8 @@ this can be very useful in many ways.</p>
  and even bad music. it reminds me about good old times when
  i'm guessing who is going to the finals with a pan and piece
  of paper. anyways! 8/10 this time:</p>
-<p>i wrote 11 teams including <strong>bosnia</strong>, <strong>moldova</strong> and <strong>malta</strong>.<br>
-but only 10 countries go to the final so i dropped malta and was wrong.<br>
+<p>i wrote 11 teams including <strong>bosnia</strong>, <strong>moldova</strong> and <strong>malta</strong>.<br />
+but only 10 countries go to the final so i dropped malta and was wrong.<br />
 <strong>netherlands</strong> was unpredictable to me, still think <em>bosnia</em> was better.</p>
                 <div class="clear"></div>
 
@@ -397,8 +415,7 @@ but only 10 countries go to the final so i dropped malta and was wrong.<br>
                     <a href="./eurovision-2016-first-semi.html">posted at 15:00</a>
                 </div>
 		<a href="./eurovision-2016-first-semi.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">May 11, 2016</h4>
-
+            </article>
             <article class="post">
                 <h2 class="title">
                     <a href="./bake-weakness.html" rel="bookmark" title="Permanent Link to &quot;bake weakness&quot;">bake weakness</a>
@@ -435,8 +452,7 @@ but only 10 countries go to the final so i dropped malta and was wrong.<br>
                     <a href="./snarky-puppy-binky.html">posted at 23:00</a>
                 </div>
 		<a href="./snarky-puppy-binky.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">May 06, 2016</h4>
-
+            </article>
             <article class="post">
                 <h2 class="title">
                     <a href="./gentoo-time.html" rel="bookmark" title="Permanent Link to &quot;gentoo time&quot;">gentoo time</a>
@@ -445,7 +461,7 @@ but only 10 countries go to the final so i dropped malta and was wrong.<br>
                 
                 
 
-                <p>got it, laptop is here. that was an easy part.<br>
+                <p>got it, laptop is here. that was an easy part.<br />
 next challenger is coming your way, it's
  <a href="https://wiki.gentoo.org/wiki/Handbook:AMD64">handbook</a> time!</p>
                 <div class="clear"></div>
@@ -466,7 +482,7 @@ next challenger is coming your way, it's
 
                 <p>added spellcheck for markdown files into my vimrc.
 hope that will help reduce the number of typing errors.</p>
-<div class="highlight"><pre><span></span>autocmd FileType md,markdown setlocal spell
+<div class="highlight"><pre>autocmd FileType md,markdown setlocal spell
 </pre></div>
 
 
@@ -479,8 +495,7 @@ done</p>
                     <a href="./vim-spell-for-md.html">posted at 13:00</a>
                 </div>
 		<a href="./vim-spell-for-md.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">May 05, 2016</h4>
-
+            </article>
             <article class="post">
                 <h2 class="title">
                     <a href="./my-digital-world.html" rel="bookmark" title="Permanent Link to &quot;my digital world&quot;">my digital world</a>
@@ -519,8 +534,7 @@ done</p>
                     <a href="./a9-sessions.html">posted at 15:00</a>
                 </div>
 		<a href="./a9-sessions.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">May 03, 2016</h4>
-
+            </article>
             <article class="post">
                 <h2 class="title">
                     <a href="./tt-champions-league.html" rel="bookmark" title="Permanent Link to &quot;tt champions league&quot;">tt champions league</a>
@@ -562,8 +576,7 @@ done</p>
                     <a href="./hello-world.html">posted at 15:00</a>
                 </div>
 		<a href="./hello-world.html#disqus_thread">Click to read and post comments</a>
-            </article>            <h4 class="date">May 02, 2016</h4>
-
+            </article>
             <article class="post">
                 <h2 class="title">
                     <a href="./first.html" rel="bookmark" title="Permanent Link to &quot;first&quot;">first</a>

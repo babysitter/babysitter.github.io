@@ -42,17 +42,17 @@
 <h2>trivia time!</h2>
 <h3>which code snippet is faster and why?</h3>
 <p>move <code>A</code> is fast, copy is slow, default vector c-tor is negligible</p>
-<div class="highlight"><pre><span></span><span class="nt">A</span> <span class="nt">a</span><span class="o">;</span>
+<div class="highlight"><pre><span class="nt">A</span> <span class="nt">a</span><span class="o">;</span>
 <span class="o">//</span> <span class="nt">first</span> <span class="nt">snippet</span>
-<span class="nt">vector</span><span class="o">&lt;</span><span class="nt">A</span><span class="o">&gt;</span> <span class="nt">b</span> <span class="p">{</span><span class="n">std</span><span class="p">:</span><span class="o">:</span><span class="nf">move</span><span class="p">(</span><span class="n">a</span><span class="p">)}</span><span class="o">;</span>
+<span class="nt">vector</span><span class="o">&lt;</span><span class="nt">A</span><span class="o">&gt;</span> <span class="nt">b</span> <span class="p">{</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">a</span><span class="p">)}</span><span class="o">;</span>
 <span class="o">//</span> <span class="nt">second</span> <span class="nt">snippet</span>
 <span class="nt">vector</span><span class="o">&lt;</span><span class="nt">A</span><span class="o">&gt;</span> <span class="nt">b</span><span class="o">;</span>
-<span class="nt">b</span><span class="p">.</span><span class="nc">emplace_back</span><span class="o">(</span><span class="nt">std</span><span class="p">::</span><span class="nd">move</span><span class="o">(</span><span class="nt">a</span><span class="o">));</span>
+<span class="nt">b</span><span class="nc">.emplace_back</span><span class="o">(</span><span class="nt">std</span><span class="o">:</span><span class="nd">:move</span><span class="o">(</span><span class="nt">a</span><span class="o">));</span>
 </pre></div>
 
 
-<p>well.. that is the same anyways, right? it is not actually.<br>
-second snippet does exactly what we thought - one <code>A move c-tor call</code><br>
+<p>well.. that is the same anyways, right? it is not actually.<br />
+second snippet does exactly what we thought - one <code>A move c-tor call</code><br />
 but first calls one more copy c-tor after that.</p>
 <ul>
 <li><code>a</code> moves to <code>initializer_list</code> </li>

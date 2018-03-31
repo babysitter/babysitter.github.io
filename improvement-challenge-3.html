@@ -36,13 +36,13 @@
                 
                 
 
-                <p>actually i am not doing very good job right now :(<br>
+                <p>actually i am not doing very good job right now :(<br />
 added adapter class and object patterns into my github repo.
  going to overtake the linux course tasks and add factories patterns.</p>
 <h2>trivia time!</h2>
 <h3>which code snippet is better and why?</h3>
 <p><code>T</code> is a random class, <code>g</code> and <code>foo</code> are function calls</p>
-<div class="highlight"><pre><span></span>// first snippet
+<div class="highlight"><pre>// first snippet
 foo(shared_ptr&lt;T&gt;(new T), g());
 // second snippet
 foo(make_shared&lt;T&gt;(), g());
@@ -52,7 +52,7 @@ foo(make_shared&lt;T&gt;(), g());
 <p>first of all <code>make_shared</code> performs one heap-allocation, whereas calling the <code>shared_ptr c-tor</code> <a href="http://en.cppreference.com/w/cpp/memory/shared_ptr">performs two</a>.</p>
 <p>but in this case perfomance is not the worst part - we should be aware of exceptions!
 <a href="https://isocpp.org/wiki/faq/exceptions#ctors-can-throw">c++faq</a> says that exceptions in c-tor is fine.</p>
-<div class="highlight"><pre><span></span>void f() {
+<div class="highlight"><pre>void f() {
  X x;            // If X::X() throws, the memory for x itself will not leak
  Y* p = new Y(); // If Y::Y() throws, the memory for *p itself will not leak
 }
